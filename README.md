@@ -106,6 +106,16 @@ La commande est réservée par défaut aux administrateurs (ouvrable à d'autres
 et chaque envoi est journalisé (expéditeur et destinataire). Si le membre bloque les MP du serveur, l'expéditeur en est averti.
 Si les logs de modération sont activés, les MP que les membres envoient au bot (leurs réponses) y apparaissent.
 
+### Memes
+
+Commandes réservées aux membres ayant le rôle **MEC PUISSANT** (`Memes:RoleName`, ou `Memes:RoleId`) :
+
+- `/meme add fichier:<image, GIF ou vidéo>` — ajoute le fichier à la banque de memes du serveur (10 Mo max, `Memes:MaxFileSize`).
+- `/meme random` — poste un meme tiré au hasard dans `#mecs-puissantss` (`Memes:ChannelName`, ou `Memes:ChannelId`).
+
+Les fichiers sont copiés dans `data/memes/` (en prod, le volume `/data/memes`), avec leur index `memes.json` :
+les liens des pièces jointes Discord expirent. Le bot doit pouvoir **envoyer des messages** et **joindre des fichiers** dans le salon.
+
 ## Administration (CLI)
 
 Le binaire sert aussi de CLI, qui passe par l'API REST avec le token du bot. En prod, dans le conteneur :

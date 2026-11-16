@@ -111,7 +111,7 @@ Si les logs de modération sont activés, les MP que les membres envoient au bot
 Commandes réservées aux membres ayant le rôle **MEC PUISSANT** (`Memes:RoleName`, ou `Memes:RoleId`) :
 
 - `/meme add fichier:<image, GIF ou vidéo>` — ajoute le fichier à la banque de memes du serveur (10 Mo max, `Memes:MaxFileSize`).
-- `/meme random` — poste un meme tiré au hasard dans `#mecs-puissantss` (`Memes:ChannelName`, ou `Memes:ChannelId`).
+- `/meme random` — poste un meme tiré au hasard dans `#mecs-puissants` (`Memes:ChannelName`, ou `Memes:ChannelId`).
 
 Les fichiers sont copiés dans `data/memes/` (en prod, le volume `/data/memes`), avec leur index `memes.json` :
 les liens des pièces jointes Discord expirent. Le bot doit pouvoir **envoyer des messages** et **joindre des fichiers** dans le salon.

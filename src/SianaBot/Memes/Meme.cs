@@ -18,7 +18,7 @@ public sealed class MemeOptions
     public ulong? RoleId { get; set; }
 
     /// <summary>Salon où sont postés les memes, si <see cref="ChannelId"/> n'est pas renseigné.</summary>
-    public string ChannelName { get; set; } = "mecs-puissantss";
+    public string ChannelName { get; set; } = "mecs-puissants";
 
     public ulong? ChannelId { get; set; }
 

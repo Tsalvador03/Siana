@@ -5,9 +5,14 @@ using Microsoft.Extensions.Options;
 
 namespace SianaBot.Memes;
 
-/// <summary>Banque de memes réservée au rôle <see cref="MemeOptions.RoleName"/> (MEC PUISSANT).</summary>
+/// <summary>
+/// Banque de memes réservée au rôle <see cref="MemeOptions.RoleName"/> (MEC PUISSANT). Discord ne permet pas à un bot
+/// de masquer une commande selon un rôle : elle est masquée à tous sauf aux administrateurs, et le serveur l'ouvre
+/// au rôle dans Paramètres du serveur → Intégrations. <see cref="RequireMemeRoleAttribute"/> vérifie quand même le rôle.
+/// </summary>
 [Group("meme", "Banque de memes des mecs puissants")]
 [CommandContextType(InteractionContextType.Guild)]
+[DefaultMemberPermissions(GuildPermission.Administrator)]
 [RequireMemeRole]
 public sealed class MemeModule(MemeStore store, IOptions<MemeOptions> options, ILogger<MemeModule> logger)
     : InteractionModuleBase<SocketInteractionContext>
@@ -63,19 +68,15 @@ public sealed class MemeModule(MemeStore store, IOptions<MemeOptions> options, I
             return;
         }
 
-        var file = new FileAttachment(store.PathOf(meme), meme.FileName);
-        var caption = $"🎲 Meme ajouté par <@{meme.AuthorId}>";
-
-        // Depuis le salon des memes, on répond directement ; ailleurs, on y poste et on confirme à l'auteur.
-        if (Context.Channel.Id == channel.Id)
-        {
-            await RespondWithFileAsync(file, caption, allowedMentions: AllowedMentions.None);
-            return;
-        }
-
+        // Anonyme : le bot poste lui-même le meme (une réponse à la commande afficherait « X a utilisé /meme random »),
+        // sans dire qui l'a ajouté ni qui l'a demandé.
         await DeferAsync(ephemeral: true);
-        await channel.SendFileAsync(file, caption, allowedMentions: AllowedMentions.None);
-        await FollowupAsync($"✅ Meme posté dans {channel.Mention}.", ephemeral: true);
+        await channel.SendFileAsync(new FileAttachment(store.PathOf(meme), meme.FileName), "🎲");
+
+        if (Context.Channel.Id == channel.Id)
+            await DeleteOriginalResponseAsync();
+        else
+            await FollowupAsync($"✅ Meme posté dans {channel.Mention}.", ephemeral: true);
     }
 }
 

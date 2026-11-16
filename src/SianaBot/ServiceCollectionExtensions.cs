@@ -1,3 +1,4 @@
+using SianaBot.Memes;
 using SianaBot.ModerationLog;
 using SianaBot.NicknameConvention;
 using SianaBot.ReactionRoles;
@@ -13,11 +14,13 @@ public static class ServiceCollectionExtensions
         services.Configure<ReactionRoleOptions>(configuration.GetSection(ReactionRoleOptions.Section));
         services.Configure<NicknameConventionOptions>(configuration.GetSection(NicknameConventionOptions.Section));
         services.Configure<ModerationLogOptions>(configuration.GetSection(ModerationLogOptions.Section));
+        services.Configure<MemeOptions>(configuration.GetSection(MemeOptions.Section));
 
         services.AddSingleton<ReactionRoleStore>();
         services.AddSingleton<ReactionRoleService>();
         services.AddSingleton<PendingRoleStore>();
         services.AddSingleton<NicknameConventionService>();
+        services.AddSingleton<MemeStore>();
         return services;
     }
 }

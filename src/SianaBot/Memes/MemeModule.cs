@@ -69,9 +69,9 @@ public sealed class MemeModule(MemeStore store, IOptions<MemeOptions> options, I
         }
 
         // Anonyme : le bot poste lui-même le meme (une réponse à la commande afficherait « X a utilisé /meme random »),
-        // sans dire qui l'a ajouté ni qui l'a demandé.
+        // sans dire qui l'a ajouté ni qui l'a demandé. En spoiler : il faut cliquer pour le voir.
         await DeferAsync(ephemeral: true);
-        await channel.SendFileAsync(new FileAttachment(store.PathOf(meme), meme.FileName), "🎲");
+        await channel.SendFileAsync(new FileAttachment(store.PathOf(meme), meme.FileName, isSpoiler: true), "🎲");
 
         if (Context.Channel.Id == channel.Id)
             await DeleteOriginalResponseAsync();

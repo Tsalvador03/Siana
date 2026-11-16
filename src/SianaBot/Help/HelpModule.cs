@@ -23,7 +23,7 @@ public sealed class HelpModule(IOptions<MemeOptions> memeOptions) : InteractionM
             embed.AddField(memeOptions.Value.RoleName,
                 "`/meme add fichier:<image, GIF ou vidéo>` — ajoute un meme à la banque\n"
                 + $"`/meme random` — poste un meme au hasard dans #{memeOptions.Value.ChannelName}\n"
-                + "Les memes sont anonymes : ni l'auteur ni la personne qui les affiche ne sont indiqués.");
+                + "Les memes sont postés en spoiler et anonymes : ni l'auteur ni la personne qui les affiche ne sont indiqués.");
 
         if (user.GuildPermissions.ManageRoles)
             embed.AddField("Gestion des rôles",

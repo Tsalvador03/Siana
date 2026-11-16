@@ -113,7 +113,7 @@ Commandes réservées aux membres ayant le rôle **MEC PUISSANT** (`Memes:RoleNa
 - `/meme add fichier:<image, GIF ou vidéo>` — ajoute le fichier à la banque de memes du serveur (10 Mo max, `Memes:MaxFileSize`).
 - `/meme random` — poste un meme tiré au hasard dans `#mecs-puissants` (`Memes:ChannelName`, ou `Memes:ChannelId`).
 
-Les memes sont anonymes : le bot les poste lui-même, sans dire qui les a ajoutés ni qui les a affichés
+Les memes sont postés en spoiler (il faut cliquer pour les voir) et anonymes : le bot les poste lui-même, sans dire qui les a ajoutés ni qui les a affichés
 (les réponses aux commandes ne sont visibles que de leur auteur). Seuls les logs de modération, réservés aux admins, gardent la trace des commandes.
 
 Discord ne laisse pas un bot masquer une commande selon un rôle : `/meme` est masquée à tous sauf aux administrateurs.

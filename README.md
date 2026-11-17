@@ -110,7 +110,8 @@ Si les logs de modération sont activés, les MP que les membres envoient au bot
 
 Commandes réservées aux membres ayant le rôle **MEC PUISSANT** (`Memes:RoleName`, ou `Memes:RoleId`) :
 
-- `/meme add fichier:<image, GIF ou vidéo>` — ajoute le fichier à la banque de memes du serveur (10 Mo max, `Memes:MaxFileSize`).
+- `/meme add fichier:<image, GIF ou vidéo> [fichier2 … fichier10]` — ajoute jusqu'à 10 fichiers à la fois à la banque de memes du serveur
+  (10 Mo max chacun, `Memes:MaxFileSize`). Un fichier refusé n'empêche pas l'ajout des autres.
 - `/meme random` — poste un meme tiré au hasard dans `#mecs-puissants` (`Memes:ChannelName`, ou `Memes:ChannelId`).
 
 Les memes sont postés en spoiler (il faut cliquer pour les voir) et anonymes : le bot les poste lui-même, sans dire qui les a ajoutés ni qui les a affichés

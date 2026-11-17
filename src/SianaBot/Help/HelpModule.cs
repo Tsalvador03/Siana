@@ -21,7 +21,7 @@ public sealed class HelpModule(IOptions<MemeOptions> memeOptions) : InteractionM
 
         if (memeOptions.Value.HasRole(user))
             embed.AddField(memeOptions.Value.RoleName,
-                "`/meme add fichier:<image, GIF ou vidéo>` — ajoute un meme à la banque\n"
+                "`/meme add fichier:<image, GIF ou vidéo>` — ajoute des memes à la banque (jusqu'à 10 à la fois)\n"
                 + $"`/meme random` — poste un meme au hasard dans #{memeOptions.Value.ChannelName}\n"
                 + "Les memes sont postés en spoiler et anonymes : ni l'auteur ni la personne qui les affiche ne sont indiqués.");
 
